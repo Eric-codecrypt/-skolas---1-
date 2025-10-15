@@ -40,37 +40,84 @@ Cardinalidades
 - Um usuário pode registrar muitas movimentações; cada movimentação pertence a um único usuário.
 - Um produto pode aparecer em muitas movimentações; cada movimentação refere-se a um único produto.
 
-ASCII ER
+ASCII ER (melhorado)
 
-+-----------+        1      N        +---------------------+
-|  users    |------------------------>| inventory_movements |
-+-----------+                         +---------------------+
-| id (PK)   |<------------------------| user_id (FK)        |
-| name      |        N      1         | product_id (FK)     |
-| email*    |                          | type                |
-| password* |                          | quantity            |
-| role      |                          | movement_date       |
-| created_at|                          | note                |
-+-----------+                          | created_at          |
-                                       +---------------------+
-          ^          
-          |          
-          |          
-          |          
-          | 1      N 
-+-----------+        
-| products  |--------------------------
-+-----------+                          
-| id (PK)   |                          
-| name      |                          
-| sku*      |                          
-| category  |                          
-| material  |                          
-| size      |                          
-| weight_g  |                          
-| min_stock |                          
-| current_st|                          
-| created_at|                          
-+-----------+                          
+Diagrama (Mermaid)
 
-Legenda: * campos com restrição adicional (UNIQUE ou confidencial).
+```mermaid
+erDiagram
+  USERS ||--o{ INVENTORY_MOVEMENTS : registra
+  PRODUCTS ||--o{ INVENTORY_MOVEMENTS : movimenta
+
+  USERS {
+    INT id PK
+    VARCHAR name
+    VARCHAR email UNIQUE
+    VARCHAR password_hash
+    ENUM role
+    TIMESTAMP created_at
+  }
+
+  PRODUCTS {
+    INT id PK
+    VARCHAR name
+    VARCHAR sku UNIQUE
+    VARCHAR category
+    VARCHAR material
+    VARCHAR size
+    INT weight_grams
+    INT min_stock
+    INT current_stock
+    TIMESTAMP created_at
+  }
+
+  INVENTORY_MOVEMENTS {
+    INT id PK
+    INT product_id FK
+    INT user_id FK
+    ENUM type
+    INT quantity
+    DATE movement_date
+    VARCHAR note
+    TIMESTAMP created_at
+  }
+```
+
+ASCII (alternativa legível)
+
+```
++-----------+           1        N          +---------------------+
+|  users    |------------------------------>| inventory_movements |
++-----------+                               +---------------------+
+| id (PK)   |<------------------------------| user_id (FK)        |
+| name      |             N        1        | product_id (FK)     |
+| email     |                               | type (entrada/saida)|
+| password_ |                               | quantity            |
+| hash      |                               | movement_date (DATE)|
+| role      |                               | note                |
+| created_at|                               | created_at          |
++-----------+                               +---------------------+
+         ^
+         |
+         | 1        N
++--------------+------------------------------
+| products     |
++--------------+
+| id (PK)      |
+| name         |
+| sku          | (UNIQUE)
+| category     |
+| material     |
+| size         |
+| weight_grams |
+| min_stock    |
+| current_stock|
+| created_at   |
++--------------+
+```
+
+Legenda:
+- PK = chave primária
+- FK = chave estrangeira
+- UNIQUE = valor único
+- type: enum('entrada','saida')
