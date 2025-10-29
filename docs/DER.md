@@ -40,36 +40,7 @@ Cardinalidades
 - Um usuário pode registrar muitas movimentações; cada movimentação pertence a um único usuário.
 - Um produto pode aparecer em muitas movimentações; cada movimentação refere-se a um único produto.
 
-ASCII ER (melhorado)
-
-Diagrama (Mermaid)
-
-```mermaid
-erDiagram
-  USERS ||--o{ INVENTORY_MOVEMENTS : registra
-  PRODUCTS ||--o{ INVENTORY_MOVEMENTS : movimenta
-
-  USERS {
-    INT id PK
-    VARCHAR name
-    VARCHAR email UNIQUE
-    VARCHAR password_hash
-    ENUM role
-    TIMESTAMP created_at
-  }
-
-  PRODUCTS {
-    INT id PK
-    VARCHAR name
-    VARCHAR sku UNIQUE
-    VARCHAR category
-    VARCHAR material
-    VARCHAR size
-    INT weight_grams
-    INT min_stock
-    INT current_stock
-    TIMESTAMP created_at
-  }
+ASCII ER
 
   INVENTORY_MOVEMENTS {
     INT id PK
@@ -116,8 +87,4 @@ ASCII (alternativa legível)
 +--------------+
 ```
 
-Legenda:
-- PK = chave primária
-- FK = chave estrangeira
-- UNIQUE = valor único
-- type: enum('entrada','saida')
+Legenda: * campos com restrição adicional (UNIQUE ou confidencial).
