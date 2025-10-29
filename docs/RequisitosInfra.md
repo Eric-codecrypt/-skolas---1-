@@ -13,3 +13,5 @@ Outros Itens
 - Servidor Web: Apache 2.4+ ou Nginx (ou servidor embutido do PHP para testes locais).
 - Extensões PHP: pdo_mysql, openssl.
 - Navegadores suportados: versões recentes de Chrome, Firefox, Edge.
+
+//updated log

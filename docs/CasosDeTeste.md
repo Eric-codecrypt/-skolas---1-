@@ -74,3 +74,4 @@ CT-15 Alerta de estoque abaixo do mínimo
 CT-16 CSRF token obrigatório
 - Passos: Submeter formulários de produto/movimentação sem o campo csrf (via ferramenta dev).
 - Resultado: Resposta 400 "CSRF inválido".
+//updated log

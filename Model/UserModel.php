@@ -28,3 +28,5 @@ class UserModel
         return (int)$this->db->lastInsertId();
     }
 }
+
+//updated log

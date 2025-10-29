@@ -114,3 +114,4 @@ class UserController
         header('Location: index.php?r=login');
     }
 }
+//updated log

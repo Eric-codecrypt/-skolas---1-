@@ -58,3 +58,5 @@ class ProductModel
         return $stmt->execute([(int)$id]);
     }
 }
+
+//updated log

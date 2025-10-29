@@ -30,3 +30,5 @@ unset($_SESSION['flash']);
     <p>Esta é a interface principal do sistema. Use o menu acima para navegar.</p>
 </body>
 </html>
+
+//updated log

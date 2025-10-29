@@ -88,3 +88,5 @@ ASCII (alternativa legível)
 ```
 
 Legenda: * campos com restrição adicional (UNIQUE ou confidencial).
+
+//updated log

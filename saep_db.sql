@@ -62,3 +62,5 @@ INSERT INTO inventory_movements (product_id, user_id, type, quantity, movement_d
   (1, 1, 'entrada', 20, '2024-08-10', 'Compra lote 001'),
   (2, 2, 'saida', 5,  '2024-08-12', 'Uso na linha A'),
   (3, 3, 'entrada', 10, '2024-08-13', 'Reposição inicial');
+
+//updated log

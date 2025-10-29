@@ -26,3 +26,5 @@ Documentação (docs/)
 Observações
 - O projeto utiliza PDO (Config.php) e tokens CSRF nos formulários.
 - Seeds incluem 3+ registros em users, products e inventory_movements.
+
+//updated log

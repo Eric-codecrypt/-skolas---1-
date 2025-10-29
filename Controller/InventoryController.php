@@ -91,3 +91,4 @@ class InventoryController
         header('Location: index.php?r=inventory');
     }
 }
+//updated log
